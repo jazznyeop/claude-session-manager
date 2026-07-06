@@ -60,6 +60,8 @@ Claude Code로 여러 작업을 하다 보면 대화 세션이 수십 개씩 쌓
 
 > 리눅스/윈도우: `list`·`add`·`cmd`·`remove`·`rename`·`cat`·`todo`는 어디서든 동작합니다. `clip`(pbcopy)·`open`(Terminal.app)만 macOS 전용입니다.
 
+> 🔐 **권한 안내(기본값):** 세션을 열 때 나가는 명령은 **안전한 기본값**(`claude --resume` / `codex resume`)이라, resume한 세션에서 Claude가 평소처럼 **권한을 물어봅니다.** 매번 묻는 게 번거로워 **자동승인(권한확인 건너뛰기)** 을 원하면, 셸에 `export SESSION_MANAGER_YOLO=1`을 추가하세요. 그러면 `--dangerously-skip-permissions`(claude)·`--yolo`(codex)가 붙습니다. ⚠️ 이건 확인 없이 실행되니 뭘 하는지 알고 켜세요.
+
 ### 설치 — 방법 A: 플러그인 (권장, 명령 2줄)
 
 Claude Code 안에서:
@@ -173,6 +175,8 @@ Say *"show my sessions"* and Claude renders a table like 👇
 - **Python 3** — standard library only, no dependencies
 
 > Linux/Windows: `list`, `add`, `cmd`, `remove`, `rename`, `cat`, `todo` work anywhere. `clip` (pbcopy) and `open` (Terminal.app) are macOS-only.
+
+> 🔐 **Permissions (default):** resume commands are **safe by default** (`claude --resume` / `codex resume`), so the resumed session still **asks for permissions** as usual. To auto-approve (skip permission prompts), add `export SESSION_MANAGER_YOLO=1` to your shell — this appends `--dangerously-skip-permissions` (claude) / `--yolo` (codex). ⚠️ That runs without confirmation; enable it only if you know what it does.
 
 ### Install — Method A: plugin (recommended)
 

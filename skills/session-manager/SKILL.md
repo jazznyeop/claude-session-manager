@@ -98,3 +98,4 @@ python3 "$S" cat "OO" ""   # 분류 해제
 - codex 세션은 현재 세션 자동 감지가 안 된다. 사용자가 codex 세션을 저장하려면 resume 명령어(UUID 포함)를 직접 붙여넣어야 한다.
 - `open`은 macOS Terminal.app 새 창을 연다. 같은 세션을 두 창에서 동시에 열면 충돌할 수 있으니, 이미 열려 있을 법하면 사용자에게 확인.
 - `pbcopy`(clip)·`osascript`+Terminal.app(open)은 macOS 전용이다. 리눅스/윈도우에선 `list`/`add`/`cmd`/`remove`/`rename`/`cat`/`todo`만 동작한다.
+- resume 명령은 **기본이 안전값**(`claude --resume`/`codex resume`, 권한 정상 확인)이다. 환경변수 `SESSION_MANAGER_YOLO=1`이 설정된 경우에만 `--dangerously-skip-permissions`/`--yolo`가 붙는다. 사용자가 "자동승인/권한생략으로 열어줘"라고 하면 이 환경변수를 셸 프로필에 추가하라고 안내할 것(직접 플래그를 붙이지 말 것).

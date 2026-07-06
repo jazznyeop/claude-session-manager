@@ -9,6 +9,10 @@ Archived transcript copies live in ~/.claude/session-archive/<tool>-<id>.jsonl s
 session survives Claude Code's cleanupPeriodDays auto-deletion. On resume the copy is
 restored to its original path first.
 
+Resume commands are SAFE by default (plain `claude --resume` / `codex resume`, which
+still ask for permissions). Export SESSION_MANAGER_YOLO=1 to auto-approve instead
+(adds `--dangerously-skip-permissions` / `--yolo`).
+
 Subcommands:
   list                       show all bookmarks grouped by category
   add NAME TOOL ID [--dir D] add a bookmark (auto-archives the transcript)
@@ -139,9 +143,14 @@ def find(entries, name):
 
 
 def resume_command(entry):
+    # Default is SAFE: plain resume that still asks for permissions normally.
+    # Opt in to auto-approve (skip permission prompts) only if the user exports
+    # SESSION_MANAGER_YOLO=1 — off by default so a shared install never surprises anyone.
+    yolo = os.environ.get("SESSION_MANAGER_YOLO") == "1"
     if entry["tool"] == "claude":
-        return "claude --dangerously-skip-permissions --resume " + entry["id"]
-    return "codex --yolo resume " + entry["id"]
+        flag = "--dangerously-skip-permissions " if yolo else ""
+        return "claude {}--resume {}".format(flag, entry["id"])
+    return "codex {}resume {}".format("--yolo " if yolo else "", entry["id"])
 
 
 def open_command(entry):
