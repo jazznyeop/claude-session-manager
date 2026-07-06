@@ -97,7 +97,7 @@ Claude Code는 기본적으로 30일(`cleanupPeriodDays`)이 지난 대화기록
 - 📦 세션을 열 때(*"열어줘"* / *"코드 줘"*) 원본이 없으면 **아카이브에서 자동 복원**한 뒤 이어줍니다.
 - 📂 목록에서 그런 세션은 `📦 보관됨(복원가능)`으로 표시됩니다.
 - ✋ 이미 저장돼 있던(살아있는) 세션을 지금 명시적으로 보관하고 싶으면 *"OO 아카이브해줘"* 라고 하면 됩니다.
-- ⏳ 원본 자체를 더 오래 살리고 싶으면 *"세션 자동삭제 기간 늘려줘"* 라고 하세요 — Claude가 `~/.claude/settings.json`의 `cleanupPeriodDays`를 원하는 일수(예: 365)로 바꿔줍니다.
+- ⏳ **세션을 저장하면 원본 수명도 자동으로 늘립니다.** 저장 시 `~/.claude/settings.json`의 `cleanupPeriodDays`가 365 미만이면 **365(1년)로 올립니다** (이미 더 크면 그대로 두고 절대 낮추지 않음). 이 값은 Claude Code **전역 설정**이라, 올릴 때 한 번 알려드립니다. 원하는 일수가 따로 있으면 *"보관기간 180일로 해줘"* 처럼 말하면 됩니다.
 
 > ⚠️ **솔직한 주의:**
 > - 이건 **파일을 복사·복원하는 방식**이라 대개 잘 되지만, Claude Code 내부 구조가 크게 바뀌면 복원 후 이어가기가 깨질 수 있습니다(best-effort).
@@ -207,7 +207,7 @@ Claude Code deletes transcripts older than `cleanupPeriodDays` (default 30). To 
 - 📦 When you open a session (*"open"* / *"give me the code"*) and the original is gone, it's **auto-restored from the archive** first.
 - 📂 Such sessions show as `📦 archived (restorable)` in `list`.
 - ✋ To archive an already-saved live session right now, say *"archive NAME"*.
-- ⏳ To keep originals alive longer, say *"extend the session cleanup period"* — Claude sets `cleanupPeriodDays` in `~/.claude/settings.json` to the number of days you want (e.g. 365).
+- ⏳ **Saving a session also extends the original's lifetime automatically.** On save, if `cleanupPeriodDays` in `~/.claude/settings.json` is below 365, it's raised to **365** (never lowered if already higher). This is a **global** Claude Code setting, so you're told once when it changes. Want a specific number? Say *"set the cleanup period to 180 days"*.
 
 > ⚠️ **Honest caveats:**
 > - It works by **copying/restoring files** — reliable in practice, but a major change to Claude Code's internals could break resume-after-restore (best-effort).
