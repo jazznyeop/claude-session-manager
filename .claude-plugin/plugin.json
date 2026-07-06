@@ -1,0 +1,8 @@
+{
+  "name": "session-manager",
+  "description": "Bookmark, list, resume and reopen your Claude Code / Codex sessions by name (macOS).",
+  "version": "1.0.0",
+  "author": {
+    "name": "Niche Choi"
+  }
+}

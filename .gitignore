@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.DS_Store
+# never publish personal/session data or tool artifacts
+.omc/
+session-bookmarks.json
+session-archive/
+*.jsonl

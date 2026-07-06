@@ -1,0 +1,13 @@
+{
+  "name": "jazznyeop",
+  "owner": {
+    "name": "Niche Choi"
+  },
+  "plugins": [
+    {
+      "name": "session-manager",
+      "source": "./",
+      "description": "Bookmark, list, resume and reopen your Claude Code / Codex sessions by name (macOS)."
+    }
+  ]
+}
